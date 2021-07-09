@@ -22,14 +22,19 @@ function displayCity({ name }) {
 function displayTime({ timezone }) {
     const time = document.getElementById('time');
     const currentTime = new Date();
-    const currentHour = currentTime.getUTCHours() + convertTimestamp(timezone);
+    let currentHour = currentTime.getUTCHours() + convertTimestamp(timezone);
     const currentMinute = currentTime.getUTCMinutes();
 
-    const currentHourConverted = currentHour > 12 ? currentHour - 12 : currentHour;
+    if (currentHour > 24) currentHour -=24
+    let currentHourConverted = currentHour > 12 ? currentHour - 12 : currentHour;
+    if (currentHourConverted > 12) currentHourConverted -= 12
+
     const clock = currentHour > 12 ? 'PM' : 'AM';
     const minutes = currentMinute < 10 ? '0' + currentMinute : currentMinute;
 
     time.innerText = `${currentHourConverted}:${minutes} ${clock}`;
+    changeBackground(currentHour)
+    console.log(currentHour);
 }
 
 function displayTemperature({ main: { temp } }) {
@@ -74,7 +79,7 @@ function displayWind({ wind }) {
     const deg = document.getElementById('deg');
     const degIcon = document.getElementById('degIcon');
 
-    if (wind.gust == null) wind.gust = 'None' 
+    if (wind.gust == null) wind.gust = 'None';
 
     speed.innerText = wind.speed;
     gust.innerText = wind.gust;
@@ -98,6 +103,14 @@ function displayAdditionalTemp({ main }) {
     min.innerText = convertKelvin(main.temp_min);
     max.innerText = convertKelvin(main.temp_max);
     feel.innerText = convertKelvin(main.feels_like);
+}   
+
+function changeBackground(time) {
+    const day = './img/bg-day.jpg';
+    const night = './img/bg-night.jpg';
+    let background = document.body.style.backgroundImage
+    background = time > 6 && time < 18 ? `url(${day});` : `url(${night});`;
+    console.log(background);
 }
 
-export { displayInfo, changeDegrees };
+export { displayInfo, changeDegrees };  
