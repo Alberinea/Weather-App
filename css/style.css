@@ -76,14 +76,6 @@ time {
     opacity: 0.65;
 }
 
-sup {
-    margin-bottom: 30px;
-}
-
-small {
-    margin-bottom: 40px;
-}
-
 #simple {
     display: flex;
     flex-direction: column;
@@ -96,6 +88,7 @@ small {
     border: 1px solid;
     font-size: 3.5rem;
     color: white;
+    margin-bottom: 150px;
 }
 
 #simple > * {
@@ -103,7 +96,8 @@ small {
 }
 
 #degreeContainer,
-#conditionContainer {
+#conditionContainer,
+#changeDegrees {
     display: flex;
     align-items: center;
 }
@@ -113,6 +107,24 @@ small {
 }
 
 #condition {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin: 0;
+}
+
+#changeDegrees {
+    justify-content: center;
+}
+
+#changeDegrees > * {
+    margin: 30px;
+    font-size: 5rem;
+    cursor: pointer;
+}
+
+#celsius {
+    color: rgb(25, 241, 213);
+}
+
+#fahrenheit {
+    color: crimson;
 }
