@@ -7,6 +7,7 @@
         <meta name="keywords" content="" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="./css/weather-icons.min.css" />
+        <link rel="stylesheet" href="./css/weather-icons-wind.css">
         <link rel="stylesheet" href="./css/style.css" />
         <script src="main.js" defer></script>
         <title>Weather App</title>
@@ -21,19 +22,59 @@
                 <i id="fahrenheit" class="wi wi-fahrenheit"></i>
             </div>
             <div id="simple">
-                <h4 id="city">New York</h4>
-                <time id="time">10:37 AM</time>
+                <h4 id="city"></h4>
+                <time id="time"></time>
                 <div id="degreeContainer">
-                    <h1 id="degree">2</h1>
+                    <h1 id="degree"></h1>
                     <i class="wi wi-celsius"></i>
                 </div>
                 <div id="conditionContainer">
-                    <p id="condition">Sunny</p>
+                    <p id="condition"></p>
                     <i id="conditionImg" class="wi wi-owm-221"></i>
                 </div>
             </div>
             <div id="detailed">
-                <div></div>
+                <div>
+                    <label>Feels like</label>
+                    <p class="degree">2</p>
+                    <i id="feel" class="wi wi-celsius"></i>
+                </div>
+                <div>
+                    <label>Min temp</label>
+                    <p class="degree">2</p>
+                    <i id="min" class="wi wi-celsius"></i>
+                </div>
+                <div>
+                    <label>Max temp</label>
+                    <p class="degree">2</p>
+                    <i id="max" class="wi wi-celsius"></i>
+                </div>
+                <div>
+                    <label>Pressure</label>
+                    <p id="Pressure">2</p>
+                </div>
+            </div>
+            <div id="detailed2">
+                <div>
+                    <label>Wind Speed</label>
+                    <i id="max" class="wi wi-windy"></i>
+                    <p id="humidity">2</p>
+                </div>
+                <div>
+                    <label>Wind Degrees</label>
+                    <i class="wi wi-wind towards-23-deg"></i>
+                    <p id="humidity">2</p>
+                </div>
+                <div>
+                    <label>Wind gust</label>
+                    <i id="max" class="wi wi-strong-wind"></i>
+                    <p id="humidity">2</p>
+                </div>
+                <div>
+                    <label>Humidity</label>
+                    <i class="wi wi-humidity"></i>
+                    <p id="humidity">2</p>
+                </div>
             </div>
         </main>
     </body>

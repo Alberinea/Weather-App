@@ -51,7 +51,6 @@ input:focus {
     outline: 0;
 }
 
-
 h4 {
     font-weight: 100;
 }
@@ -76,6 +75,14 @@ time {
     opacity: 0.65;
 }
 
+#simple,
+#detailed,
+#detailed2 {
+    backdrop-filter: blur(65px);
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
 #simple {
     display: flex;
     flex-direction: column;
@@ -83,9 +90,6 @@ time {
     align-items: center;
     height: 400px;
     width: 500px;
-    backdrop-filter: blur(20px);
-    border-radius: 10px;
-    border: 1px solid;
     font-size: 3.5rem;
     color: white;
     margin-bottom: 150px;
@@ -122,9 +126,51 @@ time {
 }
 
 #celsius {
-    color: rgb(25, 241, 213);
+    color: cyan;
 }
 
 #fahrenheit {
     color: crimson;
+}
+
+#detailed,
+#detailed2 {
+    height: 500px;
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+#detailed {
+    left: 75px;
+}
+
+#detailed2 {
+    right: 75px;
+}
+
+#detailed > *,
+#detailed2 > * {
+    display: flex;
+}
+
+#detailed > div > p,
+#detailed2 > div > p {
+    margin: 0;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+#detailed2 > div > i {
+    padding: 0 10px;
+    margin: 5px 0;
+    color: black
 }
