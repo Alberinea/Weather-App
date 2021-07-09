@@ -10,9 +10,9 @@ body {
 }
 
 body {
-    background-image: url(../img/bg-day.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url(../img/bg-day.jpg);
 }
 
 body {
