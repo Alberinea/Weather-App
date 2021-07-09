@@ -7,7 +7,6 @@ async function getAPI(location) {
     try {
         const response = await fetch(url, { mode: 'cors' });
         const data = await response.json();
-        console.log(data);
         displayInfo(data);
     } catch (error) {
         console.error(error);
@@ -23,6 +22,7 @@ function addListener() {
         if (e.key != 'Enter') return;
         e.preventDefault();
         getAPI(searchBar.value);
+        searchBar.value = ''
     });
     celsius.addEventListener('click', () => changeDegrees('celsius'));
     fahrenheit.addEventListener('click', () => changeDegrees('fahrenheit'));

@@ -9,6 +9,9 @@ function displayInfo(response) {
     displayTemperature(response);
     displayWeather(response);
     displayWeatherIcon(response);
+    displayWind(response);
+    displayOtherInfo(response);
+    displayAdditionalTemp(response);
 }
 
 function displayCity({ name }) {
@@ -51,14 +54,50 @@ function handleNoValue({ cod }) {
     return true;
 }
 
-function changeDegrees(degrees) {
-    const opposite = degrees == 'celsius' ? 'fahrenheit' : 'celsius';
+function changeDegrees(unit) {
+    const opposite = unit == 'celsius' ? 'fahrenheit' : 'celsius';
     const allOpposite = document.querySelectorAll(`.wi-${opposite}`);
     let rest;
     [, ...rest] = allOpposite;
 
-    rest.map((node) => (node.className = `wi wi-${degrees}`));
-    temperature.innerText = convertTemperature(degrees, temperature.innerText);
+    if (rest.length == 0) return;
+
+    const allTemp = document.querySelectorAll('.degree');
+
+    rest.map((node) => (node.className = `wi wi-${unit}`));
+    allTemp.forEach((temp) => (temp.innerText = convertTemperature(unit, temp.innerText)));
+}
+
+function displayWind({ wind }) {
+    const speed = document.getElementById('speed');
+    const gust = document.getElementById('gust');
+    const deg = document.getElementById('deg');
+    const degIcon = document.getElementById('degIcon');
+
+    if (wind.gust == null) wind.gust = 'None' 
+
+    speed.innerText = wind.speed;
+    gust.innerText = wind.gust;
+    deg.innerText = wind.deg;
+    degIcon.classList = `wi wi-wind towards-${wind.deg}-deg`;
+}
+
+function displayOtherInfo({ main }) {
+    const humidity = document.getElementById('humidity');
+    const pressure = document.getElementById('pressure');
+
+    humidity.innerText = main.humidity;
+    pressure.innerText = main.pressure;
+}
+
+function displayAdditionalTemp({ main }) {
+    const min = document.getElementById('min');
+    const max = document.getElementById('max');
+    const feel = document.getElementById('feel');
+
+    min.innerText = convertKelvin(main.temp_min);
+    max.innerText = convertKelvin(main.temp_max);
+    feel.innerText = convertKelvin(main.feels_like);
 }
 
 export { displayInfo, changeDegrees };
