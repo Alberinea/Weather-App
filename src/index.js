@@ -29,4 +29,3 @@ function addListener() {
 
 getAPI('New York');
 addListener();
-console.log(document.body.style);

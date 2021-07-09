@@ -13,8 +13,13 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                test: /\.(png|jpeg|gif|jpg|svg)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    include: path.join(__dirname, 'dist/img'),
+                    outputPath: 'img',
+                },
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,

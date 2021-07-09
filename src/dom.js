@@ -1,6 +1,6 @@
 import { convertTimestamp, convertKelvin, convertTemperature } from './conversion';
-
-const temperature = document.getElementById('degree');
+import night from '../dist/img/bg-night.jpg';
+import day from '../dist/img/bg-day.jpg';
 
 function displayInfo(response) {
     if (handleNoValue(response) === false) return;
@@ -34,10 +34,10 @@ function displayTime({ timezone }) {
 
     time.innerText = `${currentHourConverted}:${minutes} ${clock}`;
     changeBackground(currentHour)
-    console.log(currentHour);
 }
 
 function displayTemperature({ main: { temp } }) {
+    const temperature = document.getElementById('degree');
     temperature.innerText = convertKelvin(temp);
 }
 
@@ -106,11 +106,8 @@ function displayAdditionalTemp({ main }) {
 }   
 
 function changeBackground(time) {
-    const day = './img/bg-day.jpg';
-    const night = './img/bg-night.jpg';
-    let background = document.body.style.backgroundImage
-    background = time > 6 && time < 18 ? `url(${day});` : `url(${night});`;
-    console.log(background);
+    const background = document.body;
+    background.style.backgroundImage = time > 6 && time < 18 ? `url(${day})` : `url(${night})`;
 }
 
 export { displayInfo, changeDegrees };  
