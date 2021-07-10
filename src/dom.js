@@ -24,16 +24,17 @@ function displayTime({ timezone }) {
     const currentTime = new Date();
     let currentHour = currentTime.getUTCHours() + convertTimestamp(timezone);
     const currentMinute = currentTime.getUTCMinutes();
-
-    if (currentHour > 24) currentHour -=24
+    if (currentHour < 0) currentHour = 24 + currentHour;
+    if (currentHour > 24) currentHour -= 24;
     let currentHourConverted = currentHour > 12 ? currentHour - 12 : currentHour;
-    if (currentHourConverted > 12) currentHourConverted -= 12
+    if (currentHourConverted > 12) currentHourConverted -= 12;
+    if (currentHourConverted < 0) currentHourConverted = 12 + currentHourConverted;
 
-    const clock = currentHour > 12 ? 'PM' : 'AM';
     const minutes = currentMinute < 10 ? '0' + currentMinute : currentMinute;
+    const clock = currentHour > 12 ? 'PM' : 'AM';
 
     time.innerText = `${currentHourConverted}:${minutes} ${clock}`;
-    changeBackground(currentHour)
+    changeBackground(currentHour);
 }
 
 function displayTemperature({ main: { temp } }) {
@@ -103,11 +104,11 @@ function displayAdditionalTemp({ main }) {
     min.innerText = convertKelvin(main.temp_min);
     max.innerText = convertKelvin(main.temp_max);
     feel.innerText = convertKelvin(main.feels_like);
-}   
+}
 
 function changeBackground(time) {
     const background = document.body;
     background.style.backgroundImage = time > 6 && time < 18 ? `url(${day})` : `url(${night})`;
 }
 
-export { displayInfo, changeDegrees };  
+export { displayInfo, changeDegrees };
